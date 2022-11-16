@@ -38,7 +38,12 @@ export class AuthInterceptor implements HttpInterceptor {
             this.notificationService.showNotification('danger',errorMsg)
           }
           else {
-            errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+            if(error.status == 400) {
+              errorMsg = error.error.errors.join("<br/>");
+            }
+            else {
+              errorMsg = `${error.error?.errorMessage}`;
+            }
             this.notificationService.showNotification('danger',errorMsg)
           }
           this.spinnerService.hide();

@@ -5,7 +5,7 @@ import { AuthGuard } from './core/interceptors/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/account',
+    redirectTo: '/account/login',
     pathMatch: 'full',
   },
   { path: 'dashbord', loadChildren: () => import('../app/modules/general/dashbord/dashbord.module').then(m => m.DashbordModule),canActivate: [AuthGuard] },

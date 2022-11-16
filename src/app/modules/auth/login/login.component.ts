@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.router.navigate(['dashbord']);
             this.loginForm.reset();
             this.submitted = false;
-          } else {
           }
         });
       }
