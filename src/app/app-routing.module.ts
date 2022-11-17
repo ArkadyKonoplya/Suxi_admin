@@ -8,7 +8,7 @@ const routes: Routes = [
     redirectTo: '/account/login',
     pathMatch: 'full',
   },
-  { path: 'dashbord', loadChildren: () => import('../app/modules/general/dashbord/dashbord.module').then(m => m.DashbordModule),canActivate: [AuthGuard] },
+  { path: 'dashbord', loadChildren: () => import('../app/modules/general/dashbord/dashbord.module').then(m => m.DashbordModule)},
  { path: 'account', loadChildren: () => import('../app/modules/auth/auth.module').then(m => m.AuthModule) },
   
 ];

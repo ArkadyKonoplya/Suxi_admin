@@ -71,7 +71,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ]
 })
 export class MaterialModule {}

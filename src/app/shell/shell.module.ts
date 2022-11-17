@@ -2,18 +2,24 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FixedpluginComponent } from './fixedplugin/fixedplugin.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavbarComponent,
+    FixedpluginComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent,NavbarComponent,FixedpluginComponent,SidebarComponent],
 })
 export class ShellModule { }

@@ -100,6 +100,8 @@
                       <div *ngIf="signupform['password'].errors && submitted" class="text-danger ml-5">
                         <div *ngIf="signupform['password'].errors['required']"><sup>*</sup><span>Password is required.</span></div>
                         <div *ngIf="signupform['password'].hasError('minlength')"><sup>*</sup><span>Password must have at least 6 characters.</span></div>
+                        <div *ngIf="signupform['password'].errors['pattern']"><sup>*</sup><span>Passwords must have at least one uppercase ('A'-'Z') ,lowercase ('a'-'z'), and one non alphanumeric character.</span></div>
+
                       </div>
                       <div class="form-group has-default">
                         <div class="input-group">

@@ -9,19 +9,19 @@ import { MaterialModule } from 'src/app/app.module';
 const routes: Routes = [];
 
 @NgModule({
-  declarations: [
-    AppLayoutComponent,
-    AuthLayoutComponent
-  ],
-  imports: [
-    CommonModule,
-    ShellModule,
-    RouterModule.forChild(routes),
-    MaterialModule
-  ],
-  exports:[
-    AuthLayoutComponent,
-    AppLayoutComponent,
-  ]
+    declarations: [
+        AppLayoutComponent,
+        AuthLayoutComponent
+    ],
+    exports: [
+        AuthLayoutComponent,
+        AppLayoutComponent,
+    ],
+    imports: [
+        CommonModule,
+        ShellModule,
+        RouterModule.forChild(routes),
+        MaterialModule,
+    ]
 })
 export class LayoutModule { }

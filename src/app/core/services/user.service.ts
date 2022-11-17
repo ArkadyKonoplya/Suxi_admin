@@ -42,7 +42,16 @@ export class UserService {
 register(user: Register): Observable < any > {
   return this.http.post(this.apiRegisterUrl, user)
     .pipe(map((res: any) => {
+      let tempuser = {
+        id: 'test',
+        first_Name: user.firstName,
+        last_Name: user.lastName,
+        email: user.email,
+        authToken: "test"
+      }
+        this.authGuard.setCurrentUserValue(tempuser)
       return res;
+
     }));
 }
 

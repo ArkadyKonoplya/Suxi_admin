@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       firstName: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$")]],
       acceptTerms: [false, Validators.requiredTrue],
       confirmPassword: ['', Validators.required],
     },
@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit, OnDestroy {
           this.spinnerService.hide();
           this.signupForm.reset();
           this.notificationService.showNotification('success','Welcome to <b>SUXI ADMIN')
-          this.router.navigate(['account/login']);
+          this.router.navigate(['dashbord']);
         });
     }
 }

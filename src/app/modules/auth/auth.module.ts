@@ -27,7 +27,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    
   ]
 })
 export class AuthModule { }

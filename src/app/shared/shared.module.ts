@@ -6,12 +6,14 @@ import { ButtonModule } from './components/button/button.module';
 import { IconModule } from './components/icon/icon.module';
 import { InputModule } from './components/input/input.module';
 import { AnchorModule } from './components/anchor/anchor.module';
+import { MdModule } from './md/md.module';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MdModule
   ],
   exports: [
     FormsModule,

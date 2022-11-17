@@ -18,8 +18,6 @@ export class user {
     public first_Name: string | undefined;
     public last_Name: string | undefined;
     public email: string | undefined;
-    public password_Hash: string | undefined;
     public authToken: string | undefined;
-    public created_On: string | undefined;
 }
 
