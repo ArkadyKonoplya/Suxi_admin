@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { Register } from 'src/app/core/models/user';
 import { NotificationService } from 'src/app/core/services/notification.service';
@@ -14,12 +14,12 @@ import Validation from 'src/app/core/utils/validation';
 })
 
 export class SignupComponent implements OnInit, OnDestroy {
-  signupForm:FormGroup;
+  signupForm:UntypedFormGroup;
   test: Date = new Date();
   submitted = false;
 
   constructor(
-    public fb: FormBuilder, private userService:UserService , public readonly router:Router,  public notificationService:NotificationService, public spinnerService:SpinnerService
+    public fb: UntypedFormBuilder, private userService:UserService , public readonly router:Router,  public notificationService:NotificationService, public spinnerService:SpinnerService
   ) {
     this.signupForm = this.fb.group({
       firstName: ['',[Validators.required]],

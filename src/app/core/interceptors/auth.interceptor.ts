@@ -6,15 +6,19 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { AuthGuard } from './auth.guard';
 import { NotificationService } from '../services/notification.service';
 import { SpinnerService } from '../services/spinner.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private authGuard: AuthGuard, public notificationService:NotificationService ,public spinnerService:SpinnerService) { }
+    constructor(
+      private router: Router,private authGuard: AuthGuard, public notificationService:NotificationService ,public spinnerService:SpinnerService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with basic auth credentials if available
         const currentUser = this.authGuard.currentUserValue;
+        debugger;
         if (currentUser && currentUser.authToken) {
+          debugger;
                 request = request.clone({
                     setHeaders: {
                         Authorization: `Bearer ${currentUser.authToken}`,
@@ -33,7 +37,9 @@ export class AuthInterceptor implements HttpInterceptor {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           let errorMsg = '';
+
           if (error.error instanceof ErrorEvent) {
+            debugger;
             errorMsg = `Error: ${error.error.message}`;
             this.notificationService.showNotification('danger',errorMsg)
           }
@@ -41,10 +47,24 @@ export class AuthInterceptor implements HttpInterceptor {
             if(error.status == 400) {
               errorMsg = error.error.errors.join("<br/>");
             }
+            else if(error.status == 401){
+              errorMsg = `${error.error?.errorMessage}`;
+              this.notificationService.showNotification('danger',errorMsg);
+              //this.router.navigate(['/account/login']);
+            }
+            else if(error.status == 403){
+              if(currentUser){
+                this.router.navigate(['/error']);
+              }
+              else{
+                errorMsg = `${error.error?.errorMessage}`;
+              this.notificationService.showNotification('danger',errorMsg);
+              }
+            }
             else {
               errorMsg = `${error.error?.errorMessage}`;
-            }
             this.notificationService.showNotification('danger',errorMsg)
+            }
           }
           this.spinnerService.hide();
           return throwError(errorMsg);

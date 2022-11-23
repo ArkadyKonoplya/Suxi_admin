@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from '../interceptors/auth.guard';
-import { login, Register } from '../models/user';
+import { login, Register, Role } from '../models/user';
 const apiBaseUrl = environment.apiBaseUrl;
 
 @Injectable({
@@ -21,18 +21,16 @@ export class UserService {
   login(user: login): Observable<any> {
     return this.http.post(this.apiLoginUrl, user)
       .pipe(map((res: any) => {
-        //Temporary
-        let tempuser = {
-          id: 'test',
-          first_Name: 'test',
-          last_Name: 'test',
-          email: 'test',
-          password_Hash: 'test',
-          authToken: res.token,
-          created_On: 'test',
-        }
         if (res.isAuthSuccessful) {
-          this.authGuard.setCurrentUserValue(tempuser)
+          let user = {
+            id: 'test',
+            first_Name: res.firstName,
+            last_Name: res.lastName,
+            email: res.email,
+            authToken: res.token,
+            role: res.roles
+          }
+          this.authGuard.setCurrentUserValue(user);
         }
         return res;
       }));
@@ -42,14 +40,17 @@ export class UserService {
 register(user: Register): Observable < any > {
   return this.http.post(this.apiRegisterUrl, user)
     .pipe(map((res: any) => {
-      let tempuser = {
-        id: 'test',
-        first_Name: user.firstName,
-        last_Name: user.lastName,
-        email: user.email,
-        authToken: "test"
+      if (res.isAuthSuccessful) {
+        let user = {
+          id: 'test',
+          first_Name: res.firstName,
+          last_Name: res.lastName,
+          email: res.email,
+          authToken: res.token,
+          role: res.roles
+        }
+        this.authGuard.setCurrentUserValue(user);
       }
-        this.authGuard.setCurrentUserValue(tempuser)
       return res;
 
     }));

@@ -7,6 +7,7 @@ import { IconModule } from './components/icon/icon.module';
 import { InputModule } from './components/input/input.module';
 import { AnchorModule } from './components/anchor/anchor.module';
 import { MdModule } from './md/md.module';
+import { ForbiddenErrorModule } from './components/forbidden-error/forbidden-error.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MdModule } from './md/md.module';
     ButtonModule,
     IconModule,
     InputModule,
-    AnchorModule
+    AnchorModule,
+    ForbiddenErrorModule
   ],
 })
 export class SharedModule { }
