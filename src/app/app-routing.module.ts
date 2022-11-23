@@ -10,6 +10,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'dashbord', loadChildren: () => import('../app/modules/general/dashbord/dashbord.module').then(m => m.DashbordModule), canActivate: [AuthGuard], data: { roles: [Role.Admin,Role.Customer] },},
+  { path: 'users', loadChildren: () => import('../app/modules/users/users.module').then(m => m.UsersModule), canActivate: [AuthGuard], data: { roles: [Role.Admin] },},
  { path: 'account', loadChildren: () => import('../app/modules/auth/auth.module').then(m => m.AuthModule) },
  { path: 'error', loadChildren: () => import('../app/shared/components/forbidden-error/forbidden-error.module').then(m => m.ForbiddenErrorModule) },
 
