@@ -15,9 +15,15 @@ export declare interface Register {
 
 export class user {
     public id!: string;
-    public first_Name: string | undefined;
-    public last_Name: string | undefined;
-    public email: string | undefined;
-    public authToken: string | undefined;
+    public role!: Role; 
+    public first_Name!: string;
+    public last_Name!: string;
+    public email!: string;
+    public authToken!: string;
 }
 
+export enum Role {
+    User = 'User',
+    Admin = 'Admin',
+    Customer ='Customer'
+}

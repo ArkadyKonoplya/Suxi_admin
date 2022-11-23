@@ -1,0 +1,26 @@
+<div class="wrapper">
+<div class="sidebar" data-color="white" data-background-color="red" data-image="./assets/img/sidebar-1.jpg">
+    <app-sidebar-cmp></app-sidebar-cmp>
+    <div class="sidebar-background" style="background-image: url(assets/img/sidebar-1.jpg)"></div>
+</div>
+<div class="main-panel">
+    <app-navbar-cmp></app-navbar-cmp>
+    <hr>
+    <div class="align-items-center d-flex flex-column forbidden justify-content-center">
+        <div class="titlel mt-4" data-content="404">
+            403 - ACCESS DENIED
+        </div>
+    
+        <div class="subtitle mt-2">
+            Oops, You don't have permission to access this page.
+        </div>
+        <div class="isi m-2 p-4 text-center">
+             A web server may return a 403 Forbidden HTTP status code in response to a request from a client for a web page or resource to indicate that the server can be reached and understood the request, but refuses to take any further action. Status code 403 responses are the result of the web server being configured to deny access, for some reason, to the requested resource by the client.
+             </div>
+    
+             <button mat-raised-button class="btn btn-danger btn-round" [routerLink]="['/dashbord']">Go to homepage</button>
+       
+    </div>
+    
+</div>
+</div>

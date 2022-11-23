@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { login } from 'src/app/core/models/user';
 import { NotificationService } from 'src/app/core/services/notification.service';
@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   private sidebarVisible: boolean;
   private nativeElement: Node;
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   submitted = false;
 
-  constructor(private element: ElementRef,  public fb: FormBuilder, private userService:UserService , public readonly router:Router ,public notificationService:NotificationService, public spinnerService:SpinnerService ) {
+  constructor(private element: ElementRef,  public fb: UntypedFormBuilder, private userService:UserService , public readonly router:Router ,public notificationService:NotificationService, public spinnerService:SpinnerService ) {
       this.nativeElement = element.nativeElement;
       this.sidebarVisible = false;
       this.loginForm = this.fb.group({
