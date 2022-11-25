@@ -6,6 +6,7 @@ import { LayoutModule } from 'src/app/shell/layouts/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdModule } from 'src/app/shared/md/md.module';
 import { UsersListComponent } from './users-list/users-list.component';
+import { MaterialModule } from 'src/app/app.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MdModule,
+    MaterialModule,
     RouterModule.forChild(routes),
     LayoutModule
   ]

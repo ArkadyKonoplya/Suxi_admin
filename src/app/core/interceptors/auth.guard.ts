@@ -33,11 +33,19 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const currentUserVar = this.currentUserValue;
         if (Object.keys(currentUserVar).length != 0) {
-            // logged in so return true
-            if (route.data['roles'] && route.data['roles'].indexOf(currentUserVar.role) === -1) {
-                // role not authorised so redirect to home page
-                this.router.navigate(['/error']);
-                return false;
+            let cRoles = currentUserVar.role.split(",");
+            let validRole = false;
+            if (route.data['roles']) {
+                cRoles.forEach(cr => {
+                    if(route.data['roles'].includes(cr)){
+                        validRole = true;
+                        return ;
+                    }
+                });
+                if(!validRole) {
+                    this.router.navigate(['/error']);
+                    return false;
+                }
             }
 
             // authorised so return true
